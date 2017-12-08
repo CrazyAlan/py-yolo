@@ -201,7 +201,7 @@ def test(epoch):
         for i in range(50):
             if truths[i][1] == 0:
                 return i
-
+        return 50
     model.eval()
     if ngpus > 1:
         cur_model = model.module
@@ -225,6 +225,7 @@ def test(epoch):
             boxes = nms(boxes, nms_thresh)
             truths = target[i].view(-1, 5)
             num_gts = truths_length(truths)
+            # print(total, num_gts)
      
             total = total + num_gts
     
